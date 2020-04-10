@@ -1,0 +1,10 @@
+package Models
+
+type MediaCutRabbitMQMessage struct {
+	ChunksId int32 `json:"chunkId"`
+	From float64 `json:"from"`
+	To float64 `json:"to"`
+	Position int32 `json:"position"`
+	Resolution string `json:"resolution"`
+	MediaId int32 `json:"mediaId"`
+}
