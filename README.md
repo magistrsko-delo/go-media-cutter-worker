@@ -3,9 +3,9 @@ go media  cutter worker
 
 ## RabbitMQ 
 * Sample message  
-```[{"chunkId":15,"from":2.418667,"to":5.072,"position":0,"resolution":"1920x1080","mediaId":16},{"chunkId":19,"from":0,"to":2.0153329999999983,"position":4,"resolution":"1920x1080","mediaId":16}]```
+```[{"chunkId":10,"from":1.3466669999999983,"to":5.08,"position":0,"resolution":"1920x1080","mediaId":19},{"chunkId":12,"from":0,"to":3.089999999999998,"position":2,"resolution":"1920x1080","mediaId":19}]```
 
-##PROTOCOL BUFFER
+## PROTOCOL BUFFER
 
 ```.env
 protoc proto\helloworld.proto --go_out=plugins=grpc:.
