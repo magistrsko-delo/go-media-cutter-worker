@@ -18,7 +18,7 @@ type MediaChunksClient struct {
 func (mediaChunksClient *MediaChunksClient) GetMediaChunkInfo(chunkId int32) (*pbMediaChunks.ChunkInfo, error)  {
 
 	response, err := mediaChunksClient.client.GetMediaChunkInfo(context.Background(), &pbMediaChunks.GetMediaChunkInfoRequest{
-		ChunkId:              0,
+		ChunkId:              chunkId,
 	})
 
 	if err != nil {
