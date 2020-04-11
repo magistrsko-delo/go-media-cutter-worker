@@ -108,7 +108,9 @@ func (worker *Worker) cutVideo(mediaCutMessage *Models.MediaCutRabbitMQMessage, 
 
 	to := cutDurationHour + ":" + cutDurationMinute + ":" + cutDurationSec + "." + cutDurationMisiSec
 
-	cmdArgs := []string{"-i", directory + fileName,  "-ss", ss, "-t", to, "-async", "1", directory + "chunks/" + strconv.Itoa(int(mediaCutMessage.ChunksId)) + "_" + strconv.Itoa(rand.Intn(1000000000000)) + "_" + fileName}
+	cmdArgs := []string{"-i", directory + fileName,  "-ss", ss, "-t", to, "-async", "1", "-c:a", "aac", "-ar", "48000",
+		"-b:a", "128k", "-c:v", "h264", "-profile:v", "main", "-crf", "20",
+		directory + "chunks/" + strconv.Itoa(int(mediaCutMessage.ChunksId)) + "-" + strconv.Itoa(rand.Intn(1000000000000)) + "-" + fileName}
 
 	err := worker.ffmpeg.ExecFFmpegCommand(cmdArgs)
 	if err != nil {
