@@ -1,6 +1,7 @@
 package Worker
 
 import (
+	"fmt"
 	"github.com/streadway/amqp"
 	"log"
 	"go-media-cutter-worker/Models"
@@ -14,7 +15,8 @@ type RabbitMqConnection struct {
 }
 
 func initRabbitMqConnection(env *Models.Env) *RabbitMqConnection  {
-	conn, err := amqp.Dial("amqp://" + env.RabbitUser + ":" + env.RabbitPassword + "@" + env.RabbitHost + ":5672")  // amqp://uros:uros123@localhost:5672/
+	fmt.Println("Coonection port: " + env.RabbitPort)
+	conn, err := amqp.Dial("amqp://" + env.RabbitUser + ":" + env.RabbitPassword + "@" + env.RabbitHost + ":"+env.RabbitPort)  // amqp://uros:uros123@localhost:56721/
 	failOnError(err, "Failed to connect to RabbitMQ")
 
 	ch, err := conn.Channel()
