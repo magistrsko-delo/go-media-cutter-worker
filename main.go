@@ -1,10 +1,12 @@
 package main
 
 import (
+	"crypto/tls"
 	"go-media-cutter-worker/Models"
 	"go-media-cutter-worker/Worker"
 	"github.com/joho/godotenv"
 	"log"
+	"net/http"
 )
 
 func init() {
@@ -15,6 +17,7 @@ func init() {
 }
 
 func main()  {
+	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: true}
 	worker := Worker.InitWorker()
 	defer worker.RabbitMQ.Conn.Close()
 	defer worker.RabbitMQ.Ch.Close()
